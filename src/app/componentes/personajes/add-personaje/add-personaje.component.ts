@@ -16,10 +16,11 @@ const { faker } = require('@faker-js/faker');
 export class AddPersonajeComponent implements OnInit {
 
   personaje: Personaje = {
+    id: '',
     name: '',
     gender: '',
     species: '',
-    location: '',
+    origin: '',
     image: ''
   };
   submitted = false;
@@ -29,24 +30,24 @@ export class AddPersonajeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  savePersonaje(): void
-  {
+  savePersonaje(): void {
     const data = {
+      id: '',
       name: this.personaje.name,
       gender: this.personaje.gender,
       species: this.personaje.species,
-      location: this.personaje.location,
-      image: faker.image.image()
+      origin: this.personaje.origin,
+      image: faker.image.image(),
     };
 
-    this.personajeService.create(data).subscribe({
+    this.personajeService.createPersonaje(data).subscribe({
       next: (response) => {
         console.log(response);
         this.submitted = true;
       },
       error: (error) => {
         console.log(error);
-      }
+      },
     });
     
   }
@@ -55,10 +56,11 @@ export class AddPersonajeComponent implements OnInit {
   {
     this.submitted = false;
     this.personaje = {
+      id: '',
       name: '',
       gender: '',
       species: '',
-      location: '',
+      origin: '',
       image: ''
     }
   }

@@ -3,6 +3,6 @@ export class Personaje {
     name?: string;
     gender?: string;
     species?: string;
-    location?: any;
+    origin?: any;
     image?: string;
   }

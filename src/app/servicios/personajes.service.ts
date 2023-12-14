@@ -9,6 +9,7 @@ const baseURL = 'http://localhost:3000/personajes'
   providedIn: 'root'
 })
 export class PersonajesService {
+  private apiUrl = 'http://localhost:3000/personajes';
 
   constructor(private http: HttpClient) {}
 
@@ -22,9 +23,9 @@ export class PersonajesService {
     return this.http.get<Personaje>(`${baseURL}/${id}`);
   }
 
-  create(data: any): Observable<any>
-  {
-    return this.http.post(baseURL, data);
+ createPersonaje(data: any): Observable<any> {
+    const createUrl = `${this.apiUrl}/create`;
+    return this.http.post(createUrl, data);
   }
 
   update(id: any, data: any): Observable<any>
